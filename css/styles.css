@@ -637,6 +637,16 @@ p {
   color: var(--primary-orange-color);
 } */
 
+.modal-close:active,
+.modal-close:hover {
+  background-color: var(--ocean);
+}
+
+.modal-close:active .modal-close-icon,
+.modal-close:hover .modal-close-icon {
+  fill: white;
+}
+
 .is-hidden {
   visibility: none;
   opacity: 0;
