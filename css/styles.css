@@ -101,7 +101,20 @@ p {
 
 .nav-active {
   color: var(--ocean);
+  position: relative;
 }
+
+.nav-active::after {
+  position: absolute;
+  content: "";
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  border: 2px solid var(--ocean);
+  border-radius: 2px;
+  background-color: var(--ocean);
+}
+
 .nav-right,
 .desc-second-section,
 .projects-desc {
@@ -374,6 +387,40 @@ p {
   display: block;
   max-width: 100%;
   height: auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.box {
+  overflow: hidden;
+  position: relative;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  /* left: 0; */
+  width: 100%;
+  height: 100%;
+  background-color: #4d5ae5;
+
+  transform: translatey(100%);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  color: var(--cloud, #f4f4fd);
+
+  /* Body */
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 150% */
+  letter-spacing: 0.32px;
+  padding: 40px 32px 0;
+}
+
+.projects-card-container:hover .overlay {
+  transform: translatey(0);
 }
 
 .projects-card-content {
@@ -528,4 +575,70 @@ p {
 .footer-social-icon:hover,
 .footer-social-icon:focus {
   background-color: #31d0aa;
+}
+
+/* MODAL  WINDOW*/
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  opacity: 1;
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 408px;
+  min-height: 584px;
+  border-radius: 4px;
+  background: #fcfcfc;
+  box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.2),
+    0px 1px 3px 0px rgba(0, 0, 0, 0.12), 0px 1px 1px 0px rgba(0, 0, 0, 0.14);
+
+  transform: translate(-50%, -50%) scale(1);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.backdrop.is-hidden .modal {
+  transform: translate(-50%, -50%) scale(0);
+}
+
+.modal-close {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 24px;
+  height: 24px;
+
+  background-color: #e7e9fc;
+  color: var(--primary-black-color);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  cursor: pointer;
+
+  /* transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1); */
+}
+
+.modal-close-icon {
+  fill: currentColor;
+}
+
+/* .modal-close:hover,
+.modal-close:focus {
+  color: var(--primary-orange-color);
+} */
+
+.is-hidden {
+  visibility: none;
+  opacity: 0;
+  pointer-events: none;
 }
