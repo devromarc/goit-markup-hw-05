@@ -41,6 +41,7 @@ p {
   /* margin: 0 auto; */
   margin-left: auto;
   margin-right: auto;
+  padding: 0 15px;
 }
 
 .nav-setting {
@@ -49,9 +50,8 @@ p {
 
 .nav-list {
   display: flex;
-  /* gap: 40px; */
-  margin-left: 36px;
-  margin-top: -40px;
+  gap: 40px;
+  margin-left: 76px;
 }
 
 .header-contact-list {
@@ -91,13 +91,14 @@ p {
   letter-spacing: 0.32px;
   padding: 24px 0;
   display: block;
-  margin-top: 40px;
-  margin-left: 40px;
+  /* margin-top: 40px;
+  margin-left: 40px; */
   transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
 }
 
-.nav-bar:hover {
+.nav-bar:hover,
+.nav-bar:focus {
   color: #4d5ae5;
 }
 
@@ -106,27 +107,26 @@ p {
   position: relative;
 }
 
-.nav-bar:hover::after,
-.nav-bar:focus::after {
+.nav-bar::after {
   position: absolute;
   content: "";
   left: 0;
-  bottom: 0;
+  bottom: -1px;
   width: 100%;
+  opacity: 0;
   border: 2px solid var(--ocean);
   border-radius: 2px;
   background-color: var(--ocean);
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-bar:hover::after,
+.nav-bar:focus::after {
+  opacity: 1;
 }
 
 .nav-active::after {
-  position: absolute;
-  content: "";
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  border: 2px solid var(--ocean);
-  border-radius: 2px;
-  background-color: var(--ocean);
+  opacity: 1;
 }
 
 .nav-right,
@@ -153,7 +153,7 @@ p {
 }
 
 .nav-right:hover,
-.nav-bar:focus {
+.nav-right:focus {
   color: #4d5ae5;
 }
 
@@ -177,8 +177,6 @@ p {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* padding: 68px 284px; */
-  /* gap: 48px; */
 }
 .hero-title {
   text-align: center;
@@ -442,7 +440,8 @@ p {
   padding: 40px 32px 0;
 }
 
-.projects-card-container:hover .overlay {
+.project-link:hover .overlay,
+.project-link:focus .overlay {
   transform: translatey(0);
 }
 
